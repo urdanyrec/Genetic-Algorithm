@@ -4,3 +4,9 @@ C:\Users\urdan\Downloads\file-imp-002\GeneticAlgorithm\obj\Debug\GeneticAlgorith
 C:\Users\urdan\Downloads\file-imp-002\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.csproj.CoreCompileInputs.cache
 C:\Users\urdan\Downloads\file-imp-002\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.dll
 C:\Users\urdan\Downloads\file-imp-002\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.pdb
+C:\Users\urdan\source\repos\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.csproj.AssemblyReference.cache
+C:\Users\urdan\source\repos\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.csproj.CoreCompileInputs.cache
+C:\Users\urdan\source\repos\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.dll
+C:\Users\urdan\source\repos\GeneticAlgorithm\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.pdb
+C:\Users\urdan\source\repos\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\GeneticAlgorithm.dll
+C:\Users\urdan\source\repos\GeneticAlgorithm\GeneticAlgorithm\bin\Debug\GeneticAlgorithm.pdb

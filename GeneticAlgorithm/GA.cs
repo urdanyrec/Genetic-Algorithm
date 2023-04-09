@@ -20,6 +20,7 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 
 namespace btl.generic
@@ -114,32 +115,26 @@ namespace btl.generic
 		/// highest fitness.
 		/// </summary>
 		/// <returns>Random individual biased towards highest fitness</returns>
-		private int RouletteSelection()
+		private int TournireSelection()
 		{
-			double randomFitness = random.NextDouble() * totalFitness;
-			int idx = -1;
-			int first = 0;
-			int last = PopulationSize -1;
-			int mid = (last - first) / 2;
-
-			//  ArrayList's BinarySearch is for exact values only
-			//  so do this by hand.
-			while (idx == -1 && first <= last)
-			{
-				if (randomFitness < (double)fitnessTable[mid])
-				{
-					last = mid;
-				}
-				else if (randomFitness > (double)fitnessTable[mid])
-				{
-					first = mid;
-				}
-				mid = (first + last) / 2;
-				//  lies between i and i+1
-				if ((last - first) == 1)
-					idx = last;
+			List<int> selectedNumbers = new List<int>();
+			while (selectedNumbers.Count < 4)
+            {
+				int iter = random.Next(fitnessTable.Count);
+				if(!selectedNumbers.Exists(element => element == iter))
+					selectedNumbers.Add(iter);
 			}
-			return idx;
+			double maxFitness = Math.Abs((double)fitnessTable[selectedNumbers[0]]);
+			int maxNumber = selectedNumbers[0];
+			for (int i = 1; i < selectedNumbers.Count - 1; i++)
+            {
+				if (maxFitness > Math.Abs(selectedNumbers[i]))
+                {
+					maxFitness = (double)fitnessTable[selectedNumbers[i]];
+					maxNumber = selectedNumbers[i];
+				}				
+            }
+			return maxNumber;
 		}
 
 		/// <summary>
@@ -173,13 +168,6 @@ namespace btl.generic
 		{
 			for (int i = 0; i < PopulationSize ; i++)
 			{
-				/*if (i == 0)
-                {
-					Genome gpi = new Genome(GenomeSize);
-					gpi.Genes[0] = 3.14;
-					gpi.Genes[1] = 3.14;
-					thisGeneration.Add(gpi);
-				}*/
 				Genome g = new Genome(GenomeSize);
 				thisGeneration.Add(g);
 			}
@@ -194,8 +182,8 @@ namespace btl.generic
 
 			for (int i = 0 ; i < PopulationSize ; i+=2)
 			{
-				int pidx1 = RouletteSelection();
-				int pidx2 = RouletteSelection();
+				int pidx1 = TournireSelection();
+				int pidx2 = TournireSelection();
 				Genome parent1, parent2, child1, child2;
 				parent1 = ((Genome) thisGeneration[pidx1]);
 				parent2 = ((Genome) thisGeneration[pidx2]);
@@ -225,7 +213,7 @@ namespace btl.generic
 
 		public void GetBest(out double[] values, out double fitness)
 		{
-			Genome g = ((Genome)thisGeneration[PopulationSize-1]);
+			Genome g = ((Genome)thisGeneration[0]);
 			values = new double[g.Length];
 			g.GetValues(ref values);
 			fitness = (double)g.Fitness;
@@ -240,7 +228,7 @@ namespace btl.generic
 		{
 			if (n < 0 || n > PopulationSize-1)
 				throw new ArgumentOutOfRangeException("n too large, or too small");
-			Genome g = ((Genome)thisGeneration[n]);
+			Genome g = ((Genome)thisGeneration[PopulationSize - 1]);
 			values = new double[g.Length];
 			g.GetValues(ref values);
 			fitness = (double)g.Fitness;

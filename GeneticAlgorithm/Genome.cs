@@ -36,7 +36,7 @@ namespace btl.generic
 		private void CreateGenes()
 		{
 			for (int i = 0; i < Length; i++)
-				Genes[i] = random.NextDouble();// * 20 - 10;// - 100; //- 4;//random.NextDouble();
+				Genes[i] = random.NextDouble();
 		}
 
 		public void Crossover(ref Genome genome2, out Genome child1, out Genome child2)
@@ -67,9 +67,9 @@ namespace btl.generic
 				if (random.NextDouble() < mutationRate)
                 {
 					if (random.Next(0, 2) != 0)
-						Genes[pos] = (Genes[pos] + (random.NextDouble() / 5));// * 10) / 5);//200) - 100) / 5);//random.NextDouble()) / 2.0;
+						Genes[pos] = (Genes[pos] + (random.NextDouble() / 5));
 					else
-						Genes[pos] = (Genes[pos] - (random.NextDouble() / 5));// * 10) / 5);//200) - 100) / 5);//random.NextDouble()) / 2.0;
+						Genes[pos] = (Genes[pos] - (random.NextDouble() / 5));
 				}					
 			}
 		}

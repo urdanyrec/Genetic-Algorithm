@@ -15,6 +15,8 @@ public class Test
 		//double f1 = Math.Pow(x + 2 * y - 7, 2) + Math.Pow(2 * x + y - 5, 2);
 		//double f1 = Math.Pow(15 * x * y * (1 - x) * (1 - y) * Math.Sin(9 * Math.PI * x) * Math.Sin(9 * Math.PI * y), 2);
 		double f1 = -Math.Cos(x) * Math.Cos(y) * Math.Exp(-(Math.Pow(x - Math.PI, 2) + Math.Pow(y - Math.PI, 2)));
+		//double f1 = Math.Sin(x + y) + Math.Pow(x - y, 2) - 1.5 * x + 2.5 * y + 1;
+		//double f1 = Math.Pow(x * x + y - 11, 2) + Math.Pow(x + y * y - 7, 2);
 		return f1;
 	}
 
@@ -25,7 +27,7 @@ public class Test
 		//  Population size = 100
 		//  Generations		= 2000
 		//  Genome size		= 2
-		GA geneticAlgorithm = new GA(0.5, 0.005, 0.1, 100, 20000, 2);		
+		GA geneticAlgorithm = new GA(0.5, 0.005, 0.1, 100, 500, 2);		
 		geneticAlgorithm.FitnessFunction = new GAFunction(theActualFunction);
 		geneticAlgorithm.Elitism = false;
 		geneticAlgorithm.Go();
