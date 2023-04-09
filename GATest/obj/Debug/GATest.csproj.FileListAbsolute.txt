@@ -1,0 +1,11 @@
+C:\Users\urdan\Downloads\file-imp-002\GATest\bin\Debug\GATest.exe.config
+C:\Users\urdan\Downloads\file-imp-002\GATest\bin\Debug\GATest.exe
+C:\Users\urdan\Downloads\file-imp-002\GATest\bin\Debug\GATest.pdb
+C:\Users\urdan\Downloads\file-imp-002\GATest\bin\Debug\GeneticAlgorithm.dll
+C:\Users\urdan\Downloads\file-imp-002\GATest\bin\Debug\GeneticAlgorithm.pdb
+C:\Users\urdan\Downloads\file-imp-002\GATest\obj\Debug\GATest.csproj.AssemblyReference.cache
+C:\Users\urdan\Downloads\file-imp-002\GATest\obj\Debug\GATest.csproj.SuggestedBindingRedirects.cache
+C:\Users\urdan\Downloads\file-imp-002\GATest\obj\Debug\GATest.csproj.CoreCompileInputs.cache
+C:\Users\urdan\Downloads\file-imp-002\GATest\obj\Debug\GATest.csproj.CopyComplete
+C:\Users\urdan\Downloads\file-imp-002\GATest\obj\Debug\GATest.exe
+C:\Users\urdan\Downloads\file-imp-002\GATest\obj\Debug\GATest.pdb
