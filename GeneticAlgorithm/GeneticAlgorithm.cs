@@ -1,37 +1,20 @@
-//  All code copyright (c) 2003 Barry Lapthorn
-//  Website:  http://www.lapthorn.net
-//
-//  Disclaimer:  
-//  All code is provided on an "AS IS" basis, without warranty. The author 
-//  makes no representation, or warranty, either express or implied, with 
-//  respect to the code, its quality, accuracy, or fitness for a specific 
-//  purpose. Therefore, the author shall not have any liability to you or any 
-//  other person or entity with respect to any liability, loss, or damage 
-//  caused or alleged to have been caused directly or indirectly by the code
-//  provided.  This includes, but is not limited to, interruption of service, 
-//  loss of data, loss of profits, or consequential damages from the use of 
-//  this code.
-//
-//
-//  $Author: barry $
-//  $Revision: 1.1 $
-//
-//  $Id: GA.cs,v 1.1 2003/08/19 20:59:05 barry Exp $
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
 
-namespace btl.generic
+namespace GeneticAlgo
 {
-    public class GA
+    public class GeneticAlgorithm
 	{
 		private ArrayList thisGeneration;
 		private ArrayList nextGeneration;
 		private ArrayList fitnessTable;
 		private string strFitness;
 		private double totalFitness;
+		public Stopwatch Stopwatch = new Stopwatch();
 
 		static Random random = new Random();
 
@@ -50,7 +33,7 @@ namespace btl.generic
 		/// </summary>
 		public bool Elitism { get; set; }
 
-		public GA(double crossoverRate, double mutationRateMin, double mutationRateMax, int populationSize, int generationSize, int genomeSize)
+		public GeneticAlgorithm(double crossoverRate, double mutationRateMin, double mutationRateMax, int populationSize, int generationSize, int genomeSize)
 		{
 			Elitism = true;
 			MutationRateMin = mutationRateMin;
@@ -67,6 +50,8 @@ namespace btl.generic
 		/// </summary>
 		public void Go()
 		{
+			Stopwatch.Restart();
+
 			if (FitnessFunction == null)
 				throw new ArgumentNullException("Need to supply fitness function");
 			if (GenomeSize == 0)
@@ -105,6 +90,8 @@ namespace btl.generic
 					}
 				}
 			}
+			Stopwatch.Stop();
+
 			if (outputFitness != null)
 				outputFitness.Close();
 		}

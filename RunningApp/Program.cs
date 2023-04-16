@@ -1,12 +1,14 @@
+п»їusing GeneticAlgo;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
-using GeneticAlgo;
 
-namespace GeneticAlgo
+namespace RunningApp
 {
-	public class Test
-	{
-		//  optimal solution for this is (0.5,0.5)
+    internal class Program
+    {
 		public static double theActualFunction(double[] values)
 		{
 			if (values.GetLength(0) != 2)
@@ -18,22 +20,14 @@ namespace GeneticAlgo
 		}
 
 		public static void Main(string[] args)
-		{
-
-			//
-
-
-			
-		}
-
-		public async void MainWrapper()
-		{
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(0.5, 0.005, 0.1, 100, 500, 2);
+        {
+			//  optimal solution for this is (0.5,0.5)
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(0.5, 0.005, 0.1, 100, 5000, 2);
 			geneticAlgorithm.FitnessFunction = new GeneticAlgorithm.GAFunction(theActualFunction);
 			geneticAlgorithm.Elitism = false;
-			await Task.Factory.StartNew(() => geneticAlgorithm.Go());
-			geneticAlgorithm.Stopwatch.Stop();
-			Console.WriteLine("Время выполнения алгоритма: ", geneticAlgorithm.Stopwatch.ElapsedMilliseconds + " мс");
+			geneticAlgorithm.Go();
+
+			Console.WriteLine("Р’СЂРµРјСЏ РІС‹РїРѕР»РЅРµРЅРёСЏ Р°Р»РіРѕСЂРёС‚РјР°: " + geneticAlgorithm.Stopwatch.ElapsedMilliseconds.ToString() + " РјСЃ");
 
 			double[] values;
 			double fitness;
@@ -52,5 +46,5 @@ namespace GeneticAlgo
 				Console.WriteLine("{0} ", values[i]);
 			}
 		}
-	}
+    }
 }

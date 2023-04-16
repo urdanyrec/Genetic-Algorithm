@@ -1,0 +1,11 @@
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.csproj.AssemblyReference.cache
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.csproj.CoreCompileInputs.cache
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\RunningApp.pdb
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\GeneticAlgorithm.dll
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\GeneticAlgorithm.pdb
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.csproj.CopyComplete
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.pdb
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\RunningApp.exe.config
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\RunningApp.exe
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.csproj.SuggestedBindingRedirects.cache
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.exe

@@ -17,7 +17,7 @@
     <DelaySign>false</DelaySign>
     <OutputType>Exe</OutputType>
     <RootNamespace>GATest</RootNamespace>
-    <StartupObject />
+    <StartupObject>GeneticAlgorithm.Test</StartupObject>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
@@ -30,6 +30,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
     <BaseAddress>285212672</BaseAddress>
+    <LangVersion>7.3</LangVersion>
     <CheckForOverflowUnderflow>false</CheckForOverflowUnderflow>
     <ConfigurationOverrideFile />
     <DefineConstants>DEBUG;TRACE</DefineConstants>
