@@ -28,6 +28,8 @@ namespace GeneticAlgo
 		public string FitnessFile { get; set; }
 		public int GenerationSize { get; set; }
 
+		public TestValues Values { get; set; }
+
 		/// <summary>
 		/// Keep previous generation's fittest individual in place of worst in current
 		/// </summary>
@@ -43,6 +45,7 @@ namespace GeneticAlgo
 			GenerationSize = generationSize;
 			GenomeSize = genomeSize;
 			strFitness = Environment.CurrentDirectory + @"\lalala.txt";
+			Values = new TestValues();
 		}
 
 		/// <summary>
@@ -75,22 +78,28 @@ namespace GeneticAlgo
 				write = true;
 				outputFitness = new StreamWriter(strFitness);
 			}
-
-			for (int i = 0; i < GenerationSize; i++)
+			int i = 0;
+			double fitnessValue;
+			do//for (int i = 0; i < GenerationSize; i++)
 			{
 				CreateNextGeneration();
 				RankPopulation();
+				fitnessValue = (double)((Genome)thisGeneration[0]).Fitness; //PopulationSize - 1
 				if (write)
 				{
 					if (outputFitness != null)
 					{
-						double d = (double)((Genome)thisGeneration[PopulationSize-1]).Fitness;
-						outputFitness.WriteLine("{0},{1}",i,d);
-						Console.WriteLine("{0},{1}", i, d);
+						//outputFitness.WriteLine("{0},{1}", i, fitnessValue);
+						//Console.WriteLine("{0},{1}", i, fitnessValue);
 					}
 				}
-			}
+				i++;
+			} while (fitnessValue > -0.999);
 			Stopwatch.Stop();
+
+			Values.BestFitness.Add(fitnessValue);
+			Values.RunningTimes.Add(Stopwatch.ElapsedMilliseconds);
+			Values.GenerationCounts.Add(i);
 
 			if (outputFitness != null)
 				outputFitness.Close();
@@ -105,7 +114,7 @@ namespace GeneticAlgo
 		private int TournireSelection()
 		{
 			List<int> selectedNumbers = new List<int>();
-			while (selectedNumbers.Count < 4)
+			while (selectedNumbers.Count < 3)
             {
 				int iter = random.Next(fitnessTable.Count);
 				if(!selectedNumbers.Exists(element => element == iter))
@@ -220,5 +229,12 @@ namespace GeneticAlgo
 			g.GetValues(ref values);
 			fitness = (double)g.Fitness;
 		}
+	}
+
+	public class TestValues
+	{
+		public List<double> BestFitness { get; set; } = new List<double>();
+		public List<int> GenerationCounts { get; set; } = new List<int>();
+		public List<long> RunningTimes { get; set; } = new List<long>();
 	}
 }

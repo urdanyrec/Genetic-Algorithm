@@ -21,30 +21,53 @@ namespace RunningApp
 
 		public static void Main(string[] args)
         {
-			//  optimal solution for this is (0.5,0.5)
-			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(0.5, 0.005, 0.1, 100, 5000, 2);
+			GeneticAlgorithm geneticAlgorithm;
+			TestValues testValues;
+			Task.Run(async () =>
+			{
+				geneticAlgorithm = await GoWrapper();
+				testValues = geneticAlgorithm.Values;
+				for (int i = 0; i < geneticAlgorithm.Values.RunningTimes.Count; i++)
+				{
+					await Task.Run(() => 
+					{ 
+						Console.WriteLine("Test {0}", i);
+						Console.WriteLine("BestFitness {0}", testValues.BestFitness[i]);
+						Console.WriteLine("RunningTime {0}", testValues.RunningTimes[i]);
+						Console.WriteLine("GenerationCounts {0}", testValues.GenerationCounts[i]);
+						Console.WriteLine("");
+					});
+				}
+				Console.WriteLine("");
+				Console.WriteLine("Summary");
+				Console.WriteLine("BestFitness");
+				Console.WriteLine("Min {0}", testValues.BestFitness.Min());
+				Console.WriteLine("Max {0}", testValues.BestFitness.Max());
+				Console.WriteLine("Average {0}", testValues.BestFitness.Average());
+				Console.WriteLine("");
+				Console.WriteLine("RunningTimes");
+				Console.WriteLine("Min {0}", testValues.RunningTimes.Min());
+				Console.WriteLine("Max {0}", testValues.RunningTimes.Max());
+				Console.WriteLine("Average {0}", testValues.RunningTimes.Average());
+				Console.WriteLine("");
+				Console.WriteLine("GenerationCounts");
+				Console.WriteLine("Min {0}", testValues.GenerationCounts.Min());
+				Console.WriteLine("Max {0}", testValues.GenerationCounts.Max());
+				Console.WriteLine("Average {0}", testValues.GenerationCounts.Average());
+
+			}).GetAwaiter().GetResult();
+		}
+
+		public static async ValueTask<GeneticAlgorithm> GoWrapper()
+        {
+			GeneticAlgorithm geneticAlgorithm = new GeneticAlgorithm(0.5, 0.7, 0.9, 20, 5000000, 2);
 			geneticAlgorithm.FitnessFunction = new GeneticAlgorithm.GAFunction(theActualFunction);
 			geneticAlgorithm.Elitism = false;
-			geneticAlgorithm.Go();
 
-			Console.WriteLine("Время выполнения алгоритма: " + geneticAlgorithm.Stopwatch.ElapsedMilliseconds.ToString() + " мс");
-
-			double[] values;
-			double fitness;
-
-			geneticAlgorithm.GetBest(out values, out fitness);
-			Console.WriteLine("Best ({0}):", fitness);
-			for (int i = 0; i < values.Length; i++)
-			{
-				Console.WriteLine("{0} ", values[i]);
-			}
-
-			geneticAlgorithm.GetWorst(out values, out fitness);
-			Console.WriteLine("\nWorst ({0}):", fitness);
-			for (int i = 0; i < values.Length; i++)
-			{
-				Console.WriteLine("{0} ", values[i]);
-			}
+			for (int i = 0; i < 5; i++)
+				await Task.Run(() => geneticAlgorithm.Go());		
+			
+			return geneticAlgorithm;
 		}
     }
 }

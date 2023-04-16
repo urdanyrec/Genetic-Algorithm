@@ -9,3 +9,7 @@ C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\RunningApp.exe
 C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\RunningApp.exe
 C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.csproj.SuggestedBindingRedirects.cache
 C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\obj\Debug\RunningApp.exe
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\urdan\source\repos\GeneticAlgorithm\RunningApp\bin\Debug\System.Threading.Tasks.Extensions.xml
